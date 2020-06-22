@@ -10,8 +10,21 @@ console.log(chalk.green.bold.inverse('Hello World!'))
 yargs.command({
     command : 'add',
     describe : 'Add a note!',
-    handler : function () {
-        console.log('Adding a note!')
+    builder : {
+        title : {
+            describe : 'Note Title',
+            demandOption : true,
+            type : 'string'
+        },
+        body : {
+            describe : 'Note Description',
+            demandOption : true,
+            type : 'string'
+        }
+    },
+    handler : function (argv) {
+        console.log('Title : ', argv.title)
+        console.log('Description : ', argv.body)
     }
 })
 
@@ -38,4 +51,4 @@ yargs.command({
         console.log('Reading a note!')
     }
 })
-console.log(yargs.argv)
+yargs.parse()
