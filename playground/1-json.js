@@ -9,3 +9,5 @@ console.log(object.name, object.age)
 dataJSON = JSON.stringify(object)
 console.log(dataJSON)
 fs.writeFileSync('1-json.json', dataJSON)
+
+//addNote, loadNotes, saveNotes, duplicateNotes, module.exports
