@@ -21,5 +21,5 @@ const event = {
 console.log(square(3))
 event.printGuestList()
 //cannot access this property of the current calling object inside arrow function
-//standard function will have it's own this binding
+//standard function will have it's own this binding. That is why while defining a method that uses 'this' inside it is preferred to use ES6 method definition syntax
 //arrow function will not have it's own this binding
