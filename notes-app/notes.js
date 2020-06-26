@@ -5,6 +5,13 @@ const getNotes = () => {
     return 'Your Notes'
 }
 
+const listNotes = () => {
+    const notes = loadNotes()
+    console.log(chalk.cyanBright.inverse.bold('Your Notes!'))
+    notes.forEach((note) => console.log(note.title));
+}
+
+
 const addNote = (title, body) => {
     const notes = loadNotes();
     const duplicateNotes = notes.filter((note) => note.title === title)
@@ -51,5 +58,6 @@ const loadNotes = () => {
 module.exports = {
     getNotes : getNotes,
     addNote : addNote,
-    removeNote : removeNote
+    removeNote : removeNote,
+    listNotes : listNotes
 }
