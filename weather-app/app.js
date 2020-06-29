@@ -7,7 +7,6 @@ const user_name = process.env.USERNAME
 const password = process.env.PASSWORD
 const host = process.env.HOSTNAME
 
-
 const weatherOptions = {
     url : `http://api.weatherstack.com/current?access_key=${weather_stack_api_key}&query=37.8267,-122.4233&units=s`,
     proxy : `http://${user_name}:${password}@${host}:8080`,
@@ -15,8 +14,14 @@ const weatherOptions = {
 }
 
 request(weatherOptions, (_error, response) => {
-    const current = response.body.current
-    console.log(`${current.weather_descriptions[0]}. It is currently ${current.temperature} degrees. It feels like ${current.feelslike} though.`)
+    if(_error){
+        console.log('Unable to connect to weather service!')
+    } else if(response.body.error){
+        console.log(response.body.error.info)
+    } else {
+        const current = response.body.current
+        console.log(`${current.weather_descriptions[0]}. It is currently ${current.temperature} degrees. It feels like ${current.feelslike} though.`)
+    }
 })
 
 
