@@ -7,6 +7,7 @@ const user_name = process.env.USERNAME
 const password = process.env.PASSWORD
 const host = process.env.HOSTNAME
 
+
 const weatherOptions = {
     url : `http://api.weatherstack.com/current?access_key=${weather_stack_api_key}&query=37.8267,-122.4233&units=s`,
     proxy : `http://${user_name}:${password}@${host}:8080`,
