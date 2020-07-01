@@ -1,4 +1,5 @@
 const request = require('postman-request')
+const geocode = require('./utils/geocode')
 require('dotenv').config()
 
 const weather_stack_api_key = process.env.WEATHER_STACK_API_KEY
@@ -26,19 +27,24 @@ request(weatherOptions, (_error, response) => {
 })
 
 
-const mapOptions = {
-    url : `https://api.mapbox.com/geocoding/v5/mapbox.places/philadelphia.json?access_token=${map_access_token}&limit=1`,
-    proxy : `http://${user_name}:${password}@${host}:8080`,
-    json : true
-}
+// const mapOptions = {
+//     url : `https://api.mapbox.com/geocoding/v5/mapbox.places/philadelphia.json?access_token=${map_access_token}&limit=1`,
+//     proxy : `http://${user_name}:${password}@${host}:8080`,
+//     json : true
+// }
 
-request(mapOptions, (_error, response) => {
-    if(_error){
-        console.log('Unable to connect to mapbox server')
-    }else if(response.body.features.length === 0){
-        console.log('Unable to find location. Try another search.')
-    } else {
-    const features = response.body.features[0]
-    console.log(`Longitude: ${features.center[0]}\nLatitude : ${features.center[1]}`)
-    }
+// request(mapOptions, (_error, response) => {
+//     if(_error){
+//         console.log('Unable to connect to mapbox server')
+//     }else if(response.body.features.length === 0){
+//         console.log('Unable to find location. Try another search.')
+//     } else {
+//     const features = response.body.features[0]
+//     console.log(`Longitude: ${features.center[0]}\nLatitude : ${features.center[1]}`)
+//     }
+// })
+
+geocode('Boston', (error, data) => {
+    console.log('Error : ', error)
+    console.log('Data : ', data)
 })
