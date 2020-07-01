@@ -14,23 +14,22 @@ const geocode = (location, callback) => {
             latitude : 0,
             longitude : 0
         }
-        callback(data)
+        return(data)
     }, 2000);
 }
 
-const data = geocode('philadelphia', (data) => {
-    console.log(data)
-})
+const data = geocode('philadelphia')
+console.log(data)
 
-const add = (a, b, callback) => {
-    setTimeout(() => {
-        let sum = a + b
-        callback(sum)
-    }, 2000);
-}
+// const add = (a, b, callback) => {
+//     setTimeout(() => {
+//         let sum = a + b
+//         callback(sum)
+//     }, 2000);
+// }
 
-add(1, 4, (sum) => {
-    console.log(sum)
-})
+// add(1, 4, (sum) => {
+//     console.log(sum)
+// })
 
 
