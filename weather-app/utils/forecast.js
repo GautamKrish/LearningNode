@@ -10,19 +10,20 @@ const host = process.env.HOSTNAME
 
 const forecast = (longitude, latitude, callback) =>{
     let options = {
-        url : `http://api.weatherstack.com/current?access_key=${weather_stack_api_key}&query=${latitude},${longitude}&units=s`,
+        url : `http://api.weatherstack.com/current?access_key=${weather_stack_api_key}&query=${latitude},${longitude}&units=f`,
         proxy : `http://${user_name}:${password}@${host}:8080`,
         json : true
     }
 
     request(options, (_error, response) => {
         if(_error){
-            callback('Unable to connect to weather service!', 'undefined')
+            callback('Unable to connect to weather service!', undefined)
         } else if(response.body.error){
-            callback(response.body.error.info, 'undefined')
+            console.log('invalid coordinates')
+            callback(response.body.error.info, undefined)
         } else {
             let current = response.body.current
-            callback('undefined',{
+            callback(undefined,{
                 summary : current.weather_descriptions[0],
                 currentTemperature :current.temperature,
                 feelsLike : current.feelslike

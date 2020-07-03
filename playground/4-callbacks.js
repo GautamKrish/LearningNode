@@ -1,25 +1,33 @@
 console.log('Start')
 
-setTimeout(() => {
-    console.log('Inside setTimeout')
-}, 2000);
-
-
-console.log('Finish')
-
-
+// setTimeout(() => {
+//     console.log('Inside setTimeout')
+// }, 2000);
+const dummy = ['A','B','C','D','E']
+dummy.forEach((item) =>{
+    console.log(item)
+})
 const geocode = (location, callback) => {
-    setTimeout(() => {
-        const data = {
-            latitude : 0,
-            longitude : 0
-        }
-        return(data)
-    }, 2000);
+    // setTimeout(() => {
+    //     const data = {
+    //         latitude : 0,
+    //         longitude : 0
+    //     }
+    //     console.log('data will now be returned')
+    //     callback(data)
+    // }, 2000);
+    const data = {
+        latitude : 0,
+        longitude : 0
+    }
+    callback(data)
+    console.log('inside the geocode function')
 }
 
-const data = geocode('philadelphia')
-console.log(data)
+geocode('philadelphia', (data) => {
+    console.log(data)
+})
+
 
 // const add = (a, b, callback) => {
 //     setTimeout(() => {
@@ -32,4 +40,15 @@ console.log(data)
 //     console.log(sum)
 // })
 
+// setTimeout(() => {
+//     console.log('1 second timer')
+//     setTimeout(() => {
+//         console.log('3 second timer')
+//     }, 3000);
+// }, 1000);
 
+// setTimeout(() => {
+//     console.log('2 seconds timer')
+// }, 2000);
+
+console.log('Finish')
