@@ -17,11 +17,14 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-    res.send('Welcome to about page!')
+    res.send('<h1>Welcome to about page!</h1>')
 })
 
 app.get('/weather', (req, res) => {
-    res.send('Welcome to weather page!')
+    res.send({
+        forecast : 'It is 25 degrees here in Sreekrishnapuram',
+        location : 'Sreekrishnapuram, Palakkad, Kerala, India'
+    })
 })
 
 app.listen(3000, () => {
