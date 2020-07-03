@@ -2,12 +2,18 @@ const express = require('express')
 const app = express()
 
 app.get('', (req, res) => {
-    res.send('Hello Express!!')
+    res.send('<h1>Hello Express!!</h1>')
 })
 
 
 app.get('/help', (req, res) => {
-    res.send('Welcome to help page!')
+    res.send([{
+        name : 'Gautam',
+        age : 23
+    }, {
+        name : 'Katta',
+        age : 23
+    }])
 })
 
 app.get('/about', (req, res) => {
