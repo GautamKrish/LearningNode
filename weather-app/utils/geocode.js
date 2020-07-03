@@ -13,16 +13,20 @@ const geocode = (location, callback) => {
         proxy : `http://${user_name}:${password}@${host}:8080`,
         json : true
     }
-    request(options, (error, response) => {
+    request(options, (error, { body } = {}) => {
+        const {features} = body
+        const {place_name, center} = features[0]
+        const longitude = center[0]
+        const latitude = center[1]
         if(error){
             callback('Unable to connect to location services!', undefined)
-        } else if(response.body.features.length === 0){
+        } else if(features.length === 0){
             callback('Unable to find location. Try another search.', undefined)
         } else {
             callback(undefined, {
-                longitude : response.body.features[0].center[0],
-                latitude : response.body.features[0].center[1],
-                location : response.body.features[0].place_name
+                longitude, 
+                latitude,
+                place_name
             })
         }
     })

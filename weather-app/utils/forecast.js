@@ -15,18 +15,22 @@ const forecast = (longitude, latitude, callback) =>{
         json : true
     }
 
-    request(options, (_error, response) => {
+    request(options, (_error, { body } = {}) => {
+
+        const { current, error } = body
+        const { temperature, feelslike : feelsLike, weather_descriptions} = current
+        const summary = weather_descriptions[0]
         if(_error){
             callback('Unable to connect to weather service!', undefined)
-        } else if(response.body.error){
+        } else if(error){
             console.log('invalid coordinates')
-            callback(response.body.error.info, undefined)
+            let { info } = error
+            callback(info, undefined)
         } else {
-            let current = response.body.current
             callback(undefined,{
-                summary : current.weather_descriptions[0],
-                currentTemperature :current.temperature,
-                feelsLike : current.feelslike
+                summary,
+                temperature,
+                feelsLike
             })
         }
     })
