@@ -1,9 +1,10 @@
+const path = require('path')
 const express = require('express')
 const app = express()
 
-app.get('', (req, res) => {
-    res.send('<h1>Hello Express!!</h1>')
-})
+//express.static() to serve up static html, css, images, etc.. files
+//app.use() -> for middleware
+app.use(express.static(path.join(__dirname, '../public')))
 
 
 app.get('/help', (req, res) => {
