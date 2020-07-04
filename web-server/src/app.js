@@ -7,20 +7,6 @@ const app = express()
 app.use(express.static(path.join(__dirname, '../public')))
 
 
-app.get('/help', (req, res) => {
-    res.send([{
-        name : 'Gautam',
-        age : 23
-    }, {
-        name : 'Katta',
-        age : 23
-    }])
-})
-
-app.get('/about', (req, res) => {
-    res.send('<h1>Welcome to about page!</h1>')
-})
-
 app.get('/weather', (req, res) => {
     res.send({
         forecast : 'It is 25 degrees here in Sreekrishnapuram',
