@@ -1,13 +1,17 @@
 const path = require('path')
 const express = require('express')
 const app = express()
+const hbs = require('hbs')
 
 //to get the path to the dynamic views folder for handlebars
-const viewsPath = path.join(__dirname, '../templates')
+const viewsPath = path.join(__dirname, '../templates/views')
+const partialsPath = path.join(__dirname, '../templates/partials')
 //to setup express to use handlebars as the template engine
 app.set('view engine', 'hbs')
 //to tell express where to look for the dynamic views
 app.set('views',viewsPath)
+
+hbs.registerPartials(partialsPath)
 
 
 //express.static() to serve up static html, css, images, etc.. files
@@ -31,7 +35,8 @@ app.get('/about', (req, res) => {
 app.get('/help', (req, res) => {
     res.render('help', {
         title : 'Help Page!',
-        descr : 'Welcome to the help page!!'
+        descr : 'Welcome to the help page!!',
+        name : 'Gautam Krishnan'
     })
 })
 
