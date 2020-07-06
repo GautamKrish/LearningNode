@@ -2,12 +2,17 @@ const path = require('path')
 const express = require('express')
 const app = express()
 
+//to get the path to the dynamic views folder for handlebars
+const viewsPath = path.join(__dirname, '../templates')
+//to setup express to use handlebars as the template engine
+app.set('view engine', 'hbs')
+//to tell express where to look for the dynamic views
+app.set('views',viewsPath)
+
 
 //express.static() to serve up static html, css, images, etc.. files
 //app.use() -> for middleware
 app.use(express.static(path.join(__dirname, '../public')))
-
-app.set('view engine', 'hbs')
 
 app.get('', (req, res) => {
     res.render('index', {
