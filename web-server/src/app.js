@@ -48,6 +48,22 @@ app.get('/weather', (req, res) => {
     })
 })
 
+app.get('/help/*', (req, res) => {
+    res.render('error', {
+        title : 404,
+        error: 'No such help article found',
+        name : 'Gautam Krishnan'
+    })
+})
+
+app.get('*', (req, res) => {
+    res.render('error', {
+        title : 404,
+        error : 'Page not found!',
+        name  : 'Gautam Krishnan'
+    })
+})
+
 app.listen(3000, () => {
     console.log('Server is up and running')
 })
