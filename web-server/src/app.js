@@ -42,9 +42,14 @@ app.get('/help', (req, res) => {
 
 
 app.get('/weather', (req, res) => {
+    if(!req.query.address){
+        return res.send({
+            error : 'Please provide an address'
+        })
+    }
     res.send({
         forecast : 'It is 25 degrees here in Sreekrishnapuram',
-        location : 'Sreekrishnapuram, Palakkad, Kerala, India'
+        address : req.query.address
     })
 })
 
