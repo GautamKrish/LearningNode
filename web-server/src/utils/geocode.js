@@ -15,8 +15,8 @@ const geocode = (location, callback) => {
     }
     request(options, (error, { body } = {}) => {
         const {features} = body
-        const {place_name, center} = features[0]
-        const longitude = center[0]
+        const {place_name = 'blank', center = [1,1]} = features[0] || {}
+        const longitude = center[0] 
         const latitude = center[1]
         if(error){
             callback('Unable to connect to location services!', undefined)

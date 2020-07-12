@@ -11,7 +11,11 @@ const user = {
 
 greetings()
 
+const name = ''
+const falsy = 0
 
+const result = name || falsy
+console.log(result)
 
 
 
