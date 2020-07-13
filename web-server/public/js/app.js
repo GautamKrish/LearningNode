@@ -10,7 +10,7 @@ const fetchForecast = (location) => {
                 return messageOne.textContent = data.error
             }
             messageOne.textContent = `The forecast for ${data.place_name} is ${data.summary}.`
-            messageTwo.textContent = `Currently the temperature is ${data.temperature} degree F, but it feels like ${data.feelsLike} degree F`
+            messageTwo.textContent = `Currently the temperature is ${data.temperature} degrees, but it feels like ${data.feelsLike} degrees.`
         })
     })
 }
@@ -22,5 +22,6 @@ weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
     const location = search.value
     messageOne.textContent = 'Loading....'
+    messageTwo.textContent = ''
     fetchForecast(location)
 })
