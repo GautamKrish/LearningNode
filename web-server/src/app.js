@@ -4,6 +4,7 @@ const forecast = require('./utils/forecast')
 const geocode = require('./utils/geocode')
 const app = express()
 const hbs = require('hbs')
+const port = process.env.PORT || 3000
 
 //to get the path to the dynamic views folder for handlebars
 const viewsPath = path.join(__dirname, '../templates/views')
@@ -105,6 +106,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up and running')
+app.listen(port, () => {
+    console.log(`Server is up and running on ${port}`)
 })
